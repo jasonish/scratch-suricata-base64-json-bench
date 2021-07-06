@@ -40,7 +40,7 @@ void c_bench(uint8_t *buf, size_t len, int count)
             unsigned long olen = BASE64_BUFFER_SIZE(len);
             uint8_t encoded[olen];
             assert(Base64Encode(buf, len, encoded, &olen) == SC_BASE64_OK);
-            jb_append_string(jb, (char *)encoded);
+            jb_append_string_safe(jb, (char *)encoded);
         }
         assert(jb_len(jb) == 1092700);
         jb_free(jb);
